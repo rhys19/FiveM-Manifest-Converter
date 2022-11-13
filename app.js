@@ -6,13 +6,13 @@ let rN;
 on("onResourceStart", (resourceName) => {
     if (GetCurrentResourceName() !== resourceName) return;
 
-    axios.get('https://raw.githubusercontent.com/Micky014/FiveM-Manifest-Converter/main/fxmanifest.lua', {}).then(function (res) {
+    axios.get('https://raw.githubusercontent.com/rhys19/FiveM-Manifest-Converter/main/fxmanifest.lua', {}).then(function (res) {
         if (!res.status === 200) return log("Http request error", "error");
         let version = GetResourceMetadata(GetCurrentResourceName(), "version");
 
         rN = GetCurrentResourceName();
 
-        if (!res.data.includes(version)) log("\"manifest_converter\" is not up to date, \"https://github.com/Micky014/FiveM-Manifest-Converter\".", "warn");
+        if (!res.data.includes(version)) log("\"manifest_converter\" is not up to date, \"https://github.com/rhys19/FiveM-Manifest-Converter\".", "warn");
         else log("\"manifest_converter\" is up to date.", "success");
     }).catch(function (err) { log("Check update failed", "error") });
 });
